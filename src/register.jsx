@@ -36,16 +36,22 @@ function Register() {
       setError("");
       setSuccess("");
 
-      const response = await api.post("/user/register", {
-        username: userDetails.username,
-        email: userDetails.email,
-        password: userDetails.password,
-      });
-      const data = await response.data;
-
-      if (data.status_code == 200) {
+      if(import.meta.env.ALLOW_REGISTRATION==true){
+        const response = await api.post("/user/register", {
+            username: userDetails.username,
+            email: userDetails.email,
+            password: userDetails.password,
+          });
+          const data = await response.data;
+    
+          if (data.status_code == 200) {
+            setUserDetails(initialState);
+            setSuccess("Registration Successfull");
+          }
+      }  
+      else {
         setUserDetails(initialState);
-        setSuccess("Registration Successfull");
+        setSuccess("Registration is turned off");
       }
     } catch (error) {
       console.log(error);
