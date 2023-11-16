@@ -43,6 +43,14 @@ export const Folder = () => {
         setNewFileUploaded({uploadedAt:Date.now()})
     }
   };
+  const handleFolderDelete = async (id) => {
+    const response = await auth_api.delete(`/file/folder_delete?id=${id}`);
+    const data=response.data
+
+    if(data.status_code==200){
+        setNewFileUploaded({uploadedAt:Date.now()})
+    }
+  };
   useEffect(() => {
     fetchFolderInfo();
   }, [fetchFolderInfo, newFileUploaded]);
@@ -64,7 +72,9 @@ export const Folder = () => {
                   <img src="/file_type/folder.png" alt="" />
                 </div>
                 <h1>{item.folderName}</h1>
-                <div className="absolute top-1 right-2 text-red-600 hover:scale-110 transition-transform">
+                <div className="absolute top-1 right-2 text-red-600 hover:scale-110 transition-transform"
+                onClick={() => handleFolderDelete(item._id)}
+                >
                   <Trash size={20} />
                 </div>
               </div>
