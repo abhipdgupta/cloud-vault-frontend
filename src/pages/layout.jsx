@@ -4,7 +4,7 @@ import { useUploadFiles } from "../utils/s3Upload";
 import { useAuth } from "../hooks/useAuth";
 import { Link, Outlet, useParams } from "react-router-dom";
 import { useState } from "react";
-import Button  from "../components/ui/button";
+import Button from "../components/ui/button";
 import { auth_api } from "../utils/axios";
 import { useNewUpload } from "../hooks/useNewUpload";
 
@@ -66,7 +66,7 @@ const SidePanel = () => {
   const { folder_id } = params;
 
   const { progress, uploadFiles, filesMsg } = useUploadFiles();
-const {setNewFileUploaded}=useNewUpload()
+  const { setNewFileUploaded } = useNewUpload();
   const [showProgrss, setShowProgress] = useState(false);
   const [showCreateFolder, setShowCreateFolder] = useState(false);
 
@@ -83,10 +83,10 @@ const {setNewFileUploaded}=useNewUpload()
       folderName: folderName,
       parentFolder: folder_id,
     });
-    const data=response.data
-    if(data.status_code==200){
-        setNewFileUploaded({uploadedAt:Date.now()})
-        setFolderName('')
+    const data = response.data;
+    if (data.status_code == 200) {
+      setNewFileUploaded({ uploadedAt: Date.now() });
+      setFolderName("");
     }
   };
   return (
@@ -138,11 +138,6 @@ const {setNewFileUploaded}=useNewUpload()
               multiple
             />
           </div>
-          {/* <div className="cursor-pointer flex gap-4 items-center hover:bg-slate-500 p-2 rounded-lg">
-            <span>Recycle Bin</span>
-            <Trash2 />
-          </div> */}
-
           <div className="  flex-1 flex items-end gap-4">
             {showProgrss ? (
               <div className="relative w-full h-24 rounded-lg bg-slate-400 flex flex-col justify-center items-center ">
@@ -160,6 +155,15 @@ const {setNewFileUploaded}=useNewUpload()
               </div>
             ) : null}
           </div>
+          {import.meta.env.VITE_ALLOW_UPLOAD == 0 ? (
+            <div className="  flex-1 flex items-end gap-4">
+              <div className="relative w-full h-24 rounded-lg bg-red-600 flex flex-col justify-center items-center ">
+                <h1 className="text-2xl font-bold text-center">
+                  UPLOAD FILE IS TURNED OFF
+                </h1>
+              </div>
+            </div>
+          ) : null}
         </div>
       </aside>
     </>

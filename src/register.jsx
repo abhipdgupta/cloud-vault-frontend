@@ -35,8 +35,8 @@ function Register() {
       setIsLoading(true);
       setError("");
       setSuccess("");
-console.log("www",import.meta.env.VITE_ALLOW_REGISTRATION);
-      if(import.meta.env.VITE_ALLOW_REGISTRATION=='true'){
+
+      if(import.meta.env.VITE_ALLOW_REGISTRATION==1){
         const response = await api.post("/user/register", {
             username: userDetails.username,
             email: userDetails.email,
