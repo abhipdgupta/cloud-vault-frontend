@@ -1,8 +1,9 @@
-# React + Vite
+# CLOUD VAULT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Website link](https://main.d2bingtkjzrwox.amplifyapp.com/login)
 
-Currently, two official plugins are available:
+## Test Credential:  
+EMAIL:test@gmail.com  
+PASSWORD:test
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Registration and file upload is turned of Delete and create folder works
